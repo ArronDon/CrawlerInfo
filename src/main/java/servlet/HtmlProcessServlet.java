@@ -13,7 +13,7 @@ import java.util.List;
  * Created by arron on 2016/8/29.
  */
 public class HtmlProcessServlet {
-    public List<entity.Comment> getCommentList(String html) {
+    public List<Comment> getCommentList(String html) {
         Document doc = Jsoup.parse(html);
         Element commentlist = doc.select("div.comment-list").first();
         //System.out.println(commentlist);
@@ -27,15 +27,15 @@ public class HtmlProcessServlet {
             String name = li.select("p.name > a").first().text();
             String comment_txt = li.select("div.J_brief-cont").first().text();
             String time = li.select("span.time").text();
-            System.out.println(name + "-" + time);
+            System.out.println(name + "-" + comment_txt);
             //System.out.println(li);
             Comment commentBean = new Comment();
             commentBean.setTaste(taste);
             commentBean.setEnvironment(environment);
             commentBean.setService(service);
-            commentBean.setName(name);
-            commentBean.setComment(comment_txt);
-            commentBean.setTime(time);
+            commentBean.setUsername(name);
+            commentBean.setContent(comment_txt);
+            commentBean.setComment_time(time);
             list.add(commentBean);
         }
         return list;

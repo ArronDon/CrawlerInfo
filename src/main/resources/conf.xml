@@ -8,13 +8,13 @@
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
             <property name="driver" value="com.mysql.jdbc.Driver"></property>
-            <property name="url" value="jdbc:mysql://localhost/analysis"></property>
+            <property name="url" value="jdbc:mysql://localhost:3306/analysis?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE"></property>
             <property name="username" value="root"></property>
             <property name="password" value="root"></property>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/CommentMapper.xml"></mapper>
+        <mapper resource="commentMapper.xml"></mapper>
     </mappers>
 </configuration>

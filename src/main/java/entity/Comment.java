@@ -7,9 +7,10 @@ public class Comment {
     private String taste = null;
     private String environment = null;
     private String service = null;
-    private String name = null;
-    private String time = null;
-    private String comment = null;
+    private String username = null;
+    private String comment_time = null;
+    private String content = null;
+    private int id = 0;
 
     public String getTaste() {
         return taste;
@@ -35,29 +36,35 @@ public class Comment {
         this.service = service;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getTime() {
-        return time;
+    public String getComment_time() {
+        return comment_time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setComment_time(String comment_time) {
+        this.comment_time = comment_time;
     }
 
-    public String getComment() {
-        return comment;
+    public String getContent() {
+        return content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

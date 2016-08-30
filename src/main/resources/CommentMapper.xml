@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentMapper">
+    <select id="findCommentById" parameterType="int" resultType="entity.Comment">
+        select * from `comment` where id=#{id}
+    </select>
+    <insert id="addComment" parameterType="entity.Comment">
+        insert into `comment`(taste,environment,service,username,content,comment_time)
+        VALUES (#{taste},#{environment},#{service},#{username},#{content},#{comment_time})
+    </insert>
+</mapper>

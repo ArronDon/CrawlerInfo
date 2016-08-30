@@ -17,7 +17,7 @@ public class ReadFileServlet {
         long size=fc.size();
         //指定缓冲区
         ByteBuffer bf=ByteBuffer.allocate(1024);
-        byte[] bytes=new byte[1024];
+        byte[] bytes=new byte[102400];
         StringBuffer stringBuffer=new StringBuffer();
         while(fc.read(bf)!=-1){
             bf.flip();
