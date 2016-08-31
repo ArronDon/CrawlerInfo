@@ -9,7 +9,7 @@ import java.net.URL;
 public class HttpConnectionProcessor {
     private HttpURLConnection conn = null;
 
-    private HttpConnectionProcessor(String url) {
+    public HttpConnectionProcessor(String url) {
         URL obj;
         try {
             obj = new URL(url);

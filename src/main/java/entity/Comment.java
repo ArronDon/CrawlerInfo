@@ -8,8 +8,18 @@ public class Comment {
     private String environment = null;
     private String service = null;
     private String username = null;
+
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+    }
+
     private String comment_time = null;
     private String content = null;
+    private String shop_name = null;
     private int id = 0;
 
     public String getTaste() {

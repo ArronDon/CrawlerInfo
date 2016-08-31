@@ -32,7 +32,7 @@ public class CommentDaoImpl implements CommentDao {
         session.close();
     }
 
-    public void addComments(List<Comment> commentList) {
+    public synchronized void addComments(List<Comment> commentList) {
         SessionDao sessionDao = new SessionDao();
         this.session = sessionDao.getSession();
         String statement = "commentMapper.addComment";

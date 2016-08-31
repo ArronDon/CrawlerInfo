@@ -6,7 +6,7 @@
         select * from `comment` where id=#{id}
     </select>
     <insert id="addComment" parameterType="entity.Comment">
-        insert into `comment`(taste,environment,service,username,content,comment_time)
-        VALUES (#{taste},#{environment},#{service},#{username},#{content},#{comment_time})
+        insert into `comment`(taste,environment,service,username,content,comment_time,shop_name)
+        VALUES (#{taste},#{environment},#{service},#{username},#{content},#{comment_time},#{shop_name})
     </insert>
 </mapper>
