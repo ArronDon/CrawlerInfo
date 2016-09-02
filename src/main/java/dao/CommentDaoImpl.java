@@ -3,8 +3,6 @@ package dao;
 import entity.Comment;
 import org.apache.ibatis.session.SqlSession;
 
-import java.sql.Connection;
-import java.sql.Statement;
 import java.util.List;
 
 /**
