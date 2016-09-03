@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Comment;
 import junit.framework.TestCase;
 
 /**
@@ -7,7 +8,10 @@ import junit.framework.TestCase;
  */
 public class MemConnectionTest extends TestCase {
     public void testAddComment() throws Exception {
-
+        CommentDaoImpl commentDao=new CommentDaoImpl();
+        Comment comment=commentDao.findCommentById(1);
+        MemConnection memConnection=new MemConnection();
+        memConnection.addComment(comment);
     }
 
 }

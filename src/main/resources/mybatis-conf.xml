@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="database1">
+        <environment id="database1">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url"
+                          value="jdbc:mysql://192.168.99.132:3306/analysis?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="root"></property>
+
+                <property name="poolMaximumActiveConnections" value="10"></property>
+                <property name="poolTimeToWait" value="5000"></property>
+                <property name="poolPingEnabled" value="true"></property>
+                <!--发送到数据的帧测查询-->
+                <property name="poolPingQuery" value="select 1 from comment"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="commentMapper.xml"></mapper>
+        <mapper resource="classpath:/mapper/dianpingCommentMapper.xml"></mapper>
+    </mappers>
+</configuration>
