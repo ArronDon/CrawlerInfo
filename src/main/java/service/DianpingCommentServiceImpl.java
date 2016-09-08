@@ -1,5 +1,6 @@
 package service;
 
+import com.sun.istack.internal.logging.Logger;
 import dao.DianpingCommentDao;
 import domain.DianpingComment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service("dianpingCommentService")
 public class DianpingCommentServiceImpl implements DianpingCommentService {
     //@Resource(name = "dianpingCommentDaO")
+    private static Logger logger = Logger.getLogger(DianpingCommentServiceImpl.class);
     @Autowired
     private DianpingCommentDao dianpingCommentDao;
 
@@ -25,6 +27,13 @@ public class DianpingCommentServiceImpl implements DianpingCommentService {
     }
 
     public void addComments(List<DianpingComment> dpList) {
-        dianpingCommentDao.addComments(dpList);
+        if(dpList.size()==0)
+            return;
+        for (DianpingComment comment :
+                dpList) {
+            dianpingCommentDao.addComment(comment);
+        }
+
+        logger.info("added a list");
     }
 }

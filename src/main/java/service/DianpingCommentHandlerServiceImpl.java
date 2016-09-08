@@ -1,13 +1,14 @@
 package service;
 
 import domain.DianpingComment;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
  */
 @Service("dianpingCommentHandlerService")
 public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandlerService {
-    @Resource(name="dianpingComment")
+    private static final Logger logger = Logger.getLogger(DianpingCommentHandlerServiceImpl.class);
+    @Autowired//(name = "dianpingComment")
     private DianpingComment dianpingComment;
 
     public int getPagesAmount(String body) {
@@ -61,8 +63,17 @@ public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandler
             dianpingComment.setUsername(username);
             dianpingComment.setContent(comment_txt);
             dianpingComment.setComment_time(time);
+            dianpingComment.setShop_name(shop_name);
+            logger.info(dianpingComment.getUsername() + ":" + dianpingComment.getContent() + "<>" + dianpingComment
+                    .getShop_name());
             list.add(dianpingComment);
+            dianpingComment=null;
         }
+        for (int i = 0; i < 20; i++) {
+            DianpingComment comment = list.get(i);
+            logger.info(comment.getUsername() + ":" + comment.getContent() + "<>" + comment.getShop_name());
+        }
+
         return list;
     }
 }

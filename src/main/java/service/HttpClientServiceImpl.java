@@ -26,7 +26,7 @@ public class HttpClientServiceImpl implements HttpClientService {
         get.setHeader("Host", params.get("Host"));
         get.setHeader("Referer", params.get("Referer"));
         get.setHeader("User-Agent", params.get("User-Agent"));
-        System.out.println(get.toString());
+        //System.out.println(get.toString());
         return get;
     }
 
@@ -37,7 +37,7 @@ public class HttpClientServiceImpl implements HttpClientService {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
-            System.out.println("response"+response.toString().length());
+            //System.out.println("response"+response.toString().length());
             if (entity != null) {
                 responseBody = EntityUtils.toString(entity);
                 return responseBody;

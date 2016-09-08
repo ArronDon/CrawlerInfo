@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--默认一个client-->
+    <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+        <property name="cacheClientFactory">
+            <bean name="cacheClientFactory"
+                  class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl"></bean>
+        </property>
+        <property name="addressProvider">
+            <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+                <property name="address" value="192.168.99.132:11211"></property>
+            </bean>
+        </property>
+        <!--一致性hash-->
+        <property name="configuration">
+            <bean class="com.google.code.ssm.providers.CacheConfiguration">
+                <property name="consistentHashing" value="true"></property>
+            </bean>
+        </property>
+    </bean>
+    <!--3.2以后，文档可以指定顺序以及拦截器前后执行，暂时没用过-->
+    <bean class="com.google.code.ssm.Settings">
+        <property name="order" value="500"></property>
+    </bean>
+    <context:component-scan base-package="dao"></context:component-scan>
+</beans>
