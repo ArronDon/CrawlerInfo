@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DianpingCommentDao">
+    <!--<resultMap id="BaseResultMap" type="domain.DianpingComment">-->
+        <!--<id column="id" property="id" jdbcType="INTEGER"/>-->
+        <!--<result column="taste" property="taste" jdbcType="VARCHAR"/>-->
+        <!--<result column="environment" property="environment" jdbcType="VARCHAR"/>-->
+        <!--<result column=""-->
+    <!--</resultMap>-->
+    <select id="findCommentById" parameterType="int" resultType="domain.DianpingComment">
+        select * from `comment` where id=#{id}
+    </select>
+    <insert id="addComment" parameterType="domain.DianpingComment">
+        insert into `comment`(taste,environment,service,username,content,comment_time,shop_name)
+        VALUES (#{taste},#{environment},#{service},#{username},#{content},#{comment_time},#{shop_name})
+    </insert>
+</mapper>

@@ -44,12 +44,12 @@ public class SaverThread implements Runnable {
         logger.info("saver:"+url+"---"+response.length());
         List<DianpingComment> list=handler.getCommentList(response);
         logger.info(url+"列表大小为："+list.size());
-        if(list.size()==20){
-            for(int i=0;i<20;i++) {
-                DianpingComment comment=list.get(i);
-                logger.info(comment.getUsername()+":"+comment.getContent()+"<>"+comment.getShop_name());
-            }
-        }
+//        if(list.size()==20){
+//            for(int i=0;i<20;i++) {
+//                DianpingComment comment=list.get(i);
+//                logger.info(comment.getUsername()+":"+comment.getContent()+"<>"+comment.getShop_name());
+//            }
+//        }
         DianpingCommentService commentService=(DianpingCommentService) ContextUtil.getBean("dianpingCommentService");
         commentService.addComments(list);
     }

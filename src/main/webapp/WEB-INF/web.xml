@@ -29,4 +29,19 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <!--<context-param>-->
+        <!--<param-name>log4jConfiguration</param-name>-->
+        <!--<param-value>log4j.xml</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>rootLevel</param-name>-->
+        <!--<param-value>DEBUG</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>loggingLevel</param-name>-->
+        <!--<param-value>INFO</param-value>-->
+    <!--</context-param>-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>-->
+    <!--</listener>-->
 </web-app>

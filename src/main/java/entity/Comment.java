@@ -1,13 +1,18 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Created by arron on 2016/8/29.
  */
-public class Comment {
-    private String taste = null;
-    private String environment = null;
-    private String service = null;
-    private String username = null;
+
+public class Comment implements Serializable{
+
+    private static final long serialVersionUID = -4590076848991120889L;
+    private String taste;
+    private String environment;
+    private String service;
+    private String username;
 
     public String getShop_name() {
         return shop_name;

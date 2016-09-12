@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,8 +17,8 @@ import java.util.List;
 @Service("dianpingCommentHandlerService")
 public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandlerService {
     private static final Logger logger = Logger.getLogger(DianpingCommentHandlerServiceImpl.class);
-    @Autowired//(name = "dianpingComment")
-    private DianpingComment dianpingComment;
+    //@Autowired//(name = "dianpingComment")
+    //private DianpingComment dianpingComment;
 
     public int getPagesAmount(String body) {
         Document document = Jsoup.parse(body);
@@ -57,6 +56,8 @@ public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandler
             String comment_txt = li.select("div.J_brief-cont").first().text();
             //获取评论时间
             String time = li.select("span.time").text();
+            logger.info("评论内容如下："+taste+" "+username+" "+comment_txt);
+            DianpingComment dianpingComment=new DianpingComment();
             dianpingComment.setTaste(taste);
             dianpingComment.setEnvironment(environment);
             dianpingComment.setService(service);
@@ -64,15 +65,12 @@ public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandler
             dianpingComment.setContent(comment_txt);
             dianpingComment.setComment_time(time);
             dianpingComment.setShop_name(shop_name);
-            logger.info(dianpingComment.getUsername() + ":" + dianpingComment.getContent() + "<>" + dianpingComment
-                    .getShop_name());
+//            logger.info(dianpingComment.getUsername() + ":" + dianpingComment.getContent() + "<>" + dianpingComment
+//                    .getShop_name());
             list.add(dianpingComment);
-            dianpingComment=null;
+            //dianpingComment=null;
         }
-        for (int i = 0; i < 20; i++) {
-            DianpingComment comment = list.get(i);
-            logger.info(comment.getUsername() + ":" + comment.getContent() + "<>" + comment.getShop_name());
-        }
+
 
         return list;
     }

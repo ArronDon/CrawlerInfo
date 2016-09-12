@@ -15,8 +15,9 @@ public class SessionDao {
         SqlSession session = null;
         SqlSessionFactory sessionFactory;
         try {
-            Reader reader = Resources.getResourceAsReader("conf.xml");
+            Reader reader = Resources.getResourceAsReader("mybatis-conf.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
+
             session = sessionFactory.openSession();
         } catch (Exception e) {
             e.printStackTrace();

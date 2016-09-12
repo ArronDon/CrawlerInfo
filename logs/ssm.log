@@ -1,0 +1,1 @@
+[WARN] [2016-09-01 15:47:33][org.apache.ibatis.datasource.pooled.PooledDataSource]Execution of ping query 'select 1 from user' failed: Table 'analysis.user' doesn't exist
