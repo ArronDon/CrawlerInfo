@@ -1,6 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="CrawlerInfo:war exploded">
     <output-path>$PROJECT_DIR$/target/crawler_mvn</output-path>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -23,6 +26,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />

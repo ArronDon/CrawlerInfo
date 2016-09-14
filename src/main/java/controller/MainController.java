@@ -1,7 +1,7 @@
 package controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,9 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class MainController {
-    @RequestMapping(value = "/nice",method = RequestMethod.GET)
-    public String nice(Model model){
-        model.addAttribute("result","haha 第一个参数");
-        return "nice";
+    private static final Logger logger = Logger.getLogger(MainController.class);
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        //model.addAttribute("result","haha 绗竴涓弬鏁�");
+        logger.info("requested here");
+        return "index";
+    }
+
+    @RequestMapping(value = "/dpcomment", method = RequestMethod.GET)
+    public String dpcomment() {
+        logger.info("redirect to dpcomment.jsp");
+        return "dpcomment";
+    }
+
+    @RequestMapping(value = "/downloader", method = RequestMethod.GET)
+    public String downloaderRedirect() {
+        logger.info("redirect to downloader.jsp");
+        return "downloader";
     }
 }
