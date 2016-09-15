@@ -19,13 +19,13 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = "/dpcomment", method = RequestMethod.GET)
+    @RequestMapping(value = "/dpcommenthref", method = RequestMethod.GET)
     public String dpcomment() {
         logger.info("redirect to dpcomment.jsp");
         return "dpcomment";
     }
 
-    @RequestMapping(value = "/downloader", method = RequestMethod.GET)
+    @RequestMapping(value = "/downloaderhref", method = RequestMethod.GET)
     public String downloaderRedirect() {
         logger.info("redirect to downloader.jsp");
         return "downloader";

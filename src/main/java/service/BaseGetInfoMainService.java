@@ -8,8 +8,8 @@ import java.util.Queue;
  * Created by arron on 2016/9/3.
  */
 public interface BaseGetInfoMainService {
-    List<String> setGetParams();
+    //List<String> setGetParams(int url);
     Map<String, String> genereateHttpGetParamsList(List<String> args);
     Queue<String> setDownloadUrlQueue(String baseUrl, int count);
-    void mainService();
+    void mainService(String url);
 }

@@ -16,7 +16,7 @@ public class DianpingMainServiceImplTest extends TestCase {
     public void testDianpingMainServiceImpl(){
         ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         dianpingMainService=(BaseGetInfoMainService) ctx.getBean("dianpingMainService");
-        dianpingMainService.mainService();
+        dianpingMainService.mainService("2809750");
 
     }
 }

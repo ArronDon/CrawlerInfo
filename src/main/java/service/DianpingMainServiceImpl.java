@@ -24,28 +24,17 @@ public class DianpingMainServiceImpl implements BaseGetInfoMainService {
     private HttpClientServiceImpl httpClientService;
 
     private static Logger logger= Logger.getLogger(DianpingMainServiceImpl.class);
-    public List setGetParams() {
+    public List setGetParams(String url) {
         String cookie = "_hc.v=104a7fb9-83c8-ea32-73b0-5f3567c626d4.1472458871; __utma=1.2039981199" +
                 ".1472458881.1472458881.1472458881.1; __utmc=1; __utmz=1.1472458881.1.1.utmcsr=google.co.jp|utmccn=" +
                 "(referral)|utmcmd=referral|utmcct=/; PHOENIX_ID=0a650029-156d563a258-7a5935; s_ViewType=10; " +
                 "JSESSIONID=36353641A47CF6971DE5469D3883F125; aburl=1; cy=2; cye=beijing";
         String host = "www.dianping.com";
-        String refer = "http://www.dianping.com/shop/511543/review_all";//23721600//57214833/4183681
+        String refer = url;//"http://www.dianping.com/shop/511543/review_all";//23721600//57214833/4183681
         String user_agent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
                 "Chrome/52.0.2743.116 Safari/537.36";
         return Arrays.asList(cookie, host, refer, user_agent);
     }
-//    public Map<String, String> generateHttpGetParamsList(String cookie, String host, String referer, String
-// user_agent) {
-//
-//
-//        Map<String,String> params=new HashMap<String, String>();
-//        params.put("Cookie",cookie);
-//        params.put("Host",host);
-//        params.put("Referer",referer);
-//        params.put("User-Agent",user_agent);
-//        return params;
-//    }
 
     public Map<String, String> genereateHttpGetParamsList(List<String> args) {
 
@@ -68,11 +57,11 @@ public class DianpingMainServiceImpl implements BaseGetInfoMainService {
         return queue;
     }
 
-    public void mainService() {
+    public void mainService(String url) {
 
-        String url="http://www.dianping.com/shop/23721600/review_all";
+        //String url="http://www.dianping.com/shop/23721600/review_all";
                 //"https://www.dianping.com/shop/32333630/review_all";
-        Map<String,String> paramsMap=genereateHttpGetParamsList(setGetParams());
+        Map<String,String> paramsMap=genereateHttpGetParamsList(setGetParams(url));
         HttpGet request=httpClientService.createGetRequest(url,paramsMap);
         logger.info(request.toString());
         String response=httpClientService.getGetResponse(request);
