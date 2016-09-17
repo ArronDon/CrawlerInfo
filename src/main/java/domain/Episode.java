@@ -6,18 +6,18 @@ import java.io.Serializable;
  * Created by arron on 2016/9/17.
  */
 public class Episode implements Serializable{
-    private String name;
+    private static final long serialVersionUID = -3472711560882944100L;
+    private String series_name;
     private String links;
-    private String season;
-    private String size;
+    private String video_size;
     private String format;
 
-    public String getName() {
-        return name;
+    public String getSeries_name() {
+        return series_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSeries_name(String series_name) {
+        this.series_name = series_name;
     }
 
     public String getLinks() {
@@ -28,20 +28,12 @@ public class Episode implements Serializable{
         this.links = links;
     }
 
-    public String getSeason() {
-        return season;
+    public String getVideo_size() {
+        return video_size;
     }
 
-    public void setSeason(String season) {
-        this.season = season;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
+    public void setVideo_size(String video_size) {
+        this.video_size = video_size;
     }
 
     public String getFormat() {

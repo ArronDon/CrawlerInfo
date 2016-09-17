@@ -43,7 +43,7 @@ public class CrawlerThread implements Runnable {
         try {
             //logger.info("writer:" + url.length() + "--" + url + "-response size:" + response.length());
             client.add(url, 3000, response);
-            logger.info("crawler thread:"+url+"added");
+            logger.info("crawler thread:"+url+"cached");
             //Thread thread = new Thread(new DianpingSaverThread(url));
             //thread.run();
             //System.out.println(name);

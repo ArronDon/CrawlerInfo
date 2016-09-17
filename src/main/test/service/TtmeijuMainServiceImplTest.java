@@ -13,7 +13,7 @@ public class TtmeijuMainServiceImplTest extends TestCase {
     public void testMainService() throws Exception {
         ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         ttmjMainService=(BaseGetInfoMainService) ctx.getBean("ttmjMainService");
-        ttmjMainService.mainService("http://www.ttmeiju.com/meiju/Mr.Robot.html");
+        ttmjMainService.mainService("http://www.ttmeiju.com/meiju/Narcos.html");
     }
 
 }

@@ -53,14 +53,14 @@ public class TtmeijuHandlerServiceImpl implements TtmeijuHandlerService {
             String size=tds.get(3).text();
             String format=tds.get(4).text();
             Episode episode=new Episode();
-            episode.setName(name);
+            episode.setSeries_name(name);
             episode.setLinks(link);
-            episode.setSize(size);
+            episode.setVideo_size(size);
             episode.setFormat(format);
             episodeList.add(episode);
-            //logger.info();
+            //logger.info("ttmjhandlerserviceimpl:"+episode.getName());
         }
-        return null;
+        return episodeList;
     }
 
     //判断字符串是否为数字

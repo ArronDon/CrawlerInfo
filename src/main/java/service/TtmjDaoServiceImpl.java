@@ -35,7 +35,7 @@ public class TtmjDaoServiceImpl implements TtmjDaoService{
              ) {
 
             ttmjDao.addEpisode(e);
-            logger.info(e.getName() + " " + e.getLinks() + " " + e.getSize() + e.getSize());
+            logger.info(e.getSeries_name() + " " + e.getLinks() + " " + e.getVideo_size());
         }
     }
 }

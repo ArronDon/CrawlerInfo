@@ -5,7 +5,6 @@ import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import service.ContextUtil;
 import service.TtmeijuHandlerService;
 import service.TtmjDaoService;
 
@@ -40,21 +39,15 @@ public class TtmjSaverThread implements Runnable {
         }
         TtmeijuHandlerService ttmjHandlerService = (TtmeijuHandlerService) ctx.getBean("ttmjHandlerService");
         List<Episode> list = ttmjHandlerService.getEpisodeList(response);
-//        for (Episode e : episodes
-//                ) {
-//            logger.info(e.getName() + " " + e.getLinks() + " " + e.getSize() + e.getSize());
-//        }
-        logger.info("list大小为:"+list.size());
-        TtmjDaoService ttmjDaoService = (TtmjDaoService) ContextUtil.getBean("ttmjDaoService");
-
+        for (Episode e : list
+                ) {
+            logger.info(e.getSeries_name() + " " + e.getLinks() + " " + e.getVideo_size());
+        }
+        logger.info("list大小为:" + list == null ? 0 : list.size());
+        TtmjDaoService ttmjDaoService = (TtmjDaoService) ctx.getBean("ttmjDaoService");
         try {
-            if(list==null){
-                logger.info("ttmjdaoservice episode 为空");
-            }else {
-                logger.info("ttmj list不为空");
-                ttmjDaoService.addEpisodes(list);
-            }
-        }catch (Exception e){
+            ttmjDaoService.addEpisodes(list);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
