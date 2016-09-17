@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TtmjDao">
+    <select id="findEpisodeById" parameterType="int" resultType="domain.Episode">
+        SELECT * from `tvseries` WHERE id=#{id}
+    </select>
+    <insert id="addEpisode" parameterType="domain.Episode">
+        INSERT INTO `tvseries`(series_name,links,video_size,format)
+        VALUES (#{series_name},#{links},#{video_size},#{format})
+    </insert>
+</mapper>

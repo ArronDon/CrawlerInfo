@@ -8,12 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>nice to meet you!</title>
+    <title>美剧下载</title>
 </head>
 <body>
 <br />
 <div>
-    <p>美剧下载</p>
+    <form action="/downloader">
+        <input type="text" name="url" placeholder="输入美剧页面地址">
+        <input type="submit" value="下载">
+    </form>
 </div>
 </body>
 </html>

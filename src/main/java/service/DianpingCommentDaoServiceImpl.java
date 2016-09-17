@@ -12,9 +12,9 @@ import java.util.List;
  * Created by arron on 2016/9/2.
  */
 @Service("dianpingCommentService")
-public class DianpingCommentServiceImpl implements DianpingCommentService {
+public class DianpingCommentDaoServiceImpl implements DianpingCommentDaoService {
     //@Resource(name = "dianpingCommentDaO")
-    private static Logger logger = Logger.getLogger(DianpingCommentServiceImpl.class);
+    private static Logger logger = Logger.getLogger(DianpingCommentDaoServiceImpl.class);
     @Autowired
     private DianpingCommentDao dianpingCommentDao;
 

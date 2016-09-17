@@ -26,7 +26,8 @@ public class HttpClientServiceImpl implements HttpClientService {
         HttpGet get = new HttpGet(url);
         get.setHeader("Cookie", params.get("Cookie"));
         get.setHeader("Host", params.get("Host"));
-        get.setHeader("Referer", params.get("Referer"));
+        if(params.containsKey("Referer"))
+            get.setHeader("Referer", params.get("Referer"));
         get.setHeader("User-Agent", params.get("User-Agent"));
         return get;
     }

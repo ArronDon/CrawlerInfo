@@ -6,8 +6,8 @@ import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.ContextUtil;
+import service.DianpingCommentDaoService;
 import service.DianpingCommentHandlerService;
-import service.DianpingCommentService;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;
@@ -24,7 +24,7 @@ public class DianpingSaverThread implements Runnable {
     }
 
     public void run() {
-        logger.info("saver thread is running");
+        logger.info("dpsaver thread is running");
         ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         MemcachedClient client=(MemcachedClient) ctx.getBean("xmemcachedClient");
         String response=null;
@@ -45,7 +45,7 @@ public class DianpingSaverThread implements Runnable {
         List<DianpingComment> list=handler.getCommentList(response);
         logger.info(url+"列表大小为："+list.size());
 
-        DianpingCommentService commentService=(DianpingCommentService) ContextUtil.getBean("dianpingCommentService");
+        DianpingCommentDaoService commentService=(DianpingCommentDaoService) ContextUtil.getBean("dianpingCommentService");
         commentService.addComments(list);
     }
 }

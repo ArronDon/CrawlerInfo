@@ -24,7 +24,7 @@ public class CrawlerThread implements Runnable {
     //    @Autowired
     private static HttpClientService httpClientService;
     //    @Autowired
-    private static DianpingCommentService dianpingCommentService;
+    private static DianpingCommentDaoService dianpingCommentService;
 
     public CrawlerThread(String url, Map<String, String> paramsMap) {
         this.url = url;
@@ -56,7 +56,7 @@ public class CrawlerThread implements Runnable {
         list = dianpingHandler.getCommentList(response);*/
         Random random = new Random();
         int time = random.nextInt(9000);
-        /*dianpingCommentService = (DianpingCommentService) ContextUtil.getBean("dianpingCommentService");
+        /*dianpingCommentService = (DianpingCommentDaoService) ContextUtil.getBean("dianpingCommentService");
         dianpingCommentService.addComments(list);
         System.out.println(Thread.currentThread().getName() + ":" + System.currentTimeMillis() + "：进入睡眠");*/
         try {

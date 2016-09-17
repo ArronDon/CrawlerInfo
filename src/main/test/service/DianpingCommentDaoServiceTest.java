@@ -10,15 +10,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by arron on 2016/9/2.
  */
 
-public class DianpingCommentServiceTest extends TestCase {
+public class DianpingCommentDaoServiceTest extends TestCase {
     @Autowired
-    private DianpingCommentService dianpingCommentService;
+    private DianpingCommentDaoService dianpingCommentService;
 
     @Test
     public void testFindCommentById() throws Exception {
         System.out.println("here");
         ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        DianpingCommentService dianpingCommentService=(DianpingCommentService) ctx.getBean("dianpingCommentService");
+        DianpingCommentDaoService dianpingCommentService=(DianpingCommentDaoService) ctx.getBean("dianpingCommentService");
         DianpingComment comment = dianpingCommentService.findCommentById(2);
         System.out.println(comment.getContent());
     }

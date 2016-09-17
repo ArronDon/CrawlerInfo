@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class DianpingCommentServiceImplTest extends AbstractJUnit4SpringContextTests {
+public class DianpingCommentDaoServiceImplTest extends AbstractJUnit4SpringContextTests {
     @Autowired
-    private DianpingCommentService dianpingCommentService;
+    private DianpingCommentDaoService dianpingCommentService;
     @Test
     public void testFindCommentById() throws Exception {
         DianpingComment dianpingComment=dianpingCommentService.findCommentById(2);

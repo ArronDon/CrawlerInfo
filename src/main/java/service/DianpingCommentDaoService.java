@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by arron on 2016/9/2.
  */
-public interface DianpingCommentService {
+public interface DianpingCommentDaoService {
     DianpingComment findCommentById(int id);
 
     void addComment(DianpingComment dpc);
