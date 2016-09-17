@@ -37,15 +37,15 @@ public class CrawlerThread implements Runnable {
         //logger.info("request size" + request.getAllHeaders());
         String response = httpClientService.getGetResponse(request);
         //logger.info("response here" + response.length());
-        logger.info("crawler:"+url+"---"+response.length());
+        logger.info("crawler thread:"+url+"---"+response.length());
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         MemcachedClient client = (MemcachedClient) ctx.getBean("xmemcachedClient");
         try {
             //logger.info("writer:" + url.length() + "--" + url + "-response size:" + response.length());
             client.add(url, 3000, response);
-            logger.info(url+"added");
-            Thread thread = new Thread(new SaverThread(url));
-            thread.run();
+            logger.info("crawler thread:"+url+"added");
+            //Thread thread = new Thread(new DianpingSaverThread(url));
+            //thread.run();
             //System.out.println(name);
         } catch (Exception e) {
             e.printStackTrace();

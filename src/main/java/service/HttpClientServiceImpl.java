@@ -6,6 +6,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -15,29 +16,27 @@ import java.util.Map;
  */
 @Service("httpClientService")
 public class HttpClientServiceImpl implements HttpClientService {
+    private static final Logger logger=Logger.getLogger(HttpClientServiceImpl.class);
     public HttpGet createGetRequest(String url, Map<String, String> params) {
         String reqest = null;
 
 
-        //request.setConfig(localConfig);
         //设置请求报文头
+        logger.info("httpclientserviceimpl "+url);
         HttpGet get = new HttpGet(url);
         get.setHeader("Cookie", params.get("Cookie"));
         get.setHeader("Host", params.get("Host"));
         get.setHeader("Referer", params.get("Referer"));
         get.setHeader("User-Agent", params.get("User-Agent"));
-        //System.out.println(get.toString());
         return get;
     }
 
     public String getGetResponse(HttpGet request) {
         String responseBody = null;
-        //HttpGet get = new HttpGet(url);//createGetRequest(url, params);
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
-            //System.out.println("response"+response.toString().length());
             if (entity != null) {
                 responseBody = EntityUtils.toString(entity);
                 return responseBody;
@@ -46,7 +45,6 @@ public class HttpClientServiceImpl implements HttpClientService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            //n--;
         }
         return responseBody;
     }

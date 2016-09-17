@@ -24,7 +24,7 @@ public class WriterThread implements Runnable {
             logger.info("writer:" + url.length() + "--" + url + "-response size:" + response.length());
             client.add(url, 3000, response);
 
-            Thread thread = new Thread(new SaverThread(url));
+            Thread thread = new Thread(new DianpingSaverThread(url));
             thread.run();
             //System.out.println(name);
         } catch (Exception e) {

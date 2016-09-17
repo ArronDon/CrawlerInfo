@@ -38,6 +38,7 @@ public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandler
             //logger.dubug("文本为空");
             return null;
         }
+        logger.info("DianpingCommentHandlerServiceImpl:"+ Thread.currentThread().getName());
         Document doc = Jsoup.parse(body);
         Element commentlist = doc.select("div.comment-list").first();
         Elements lilist = commentlist.select("li[data-id]");
@@ -56,6 +57,7 @@ public class DianpingCommentHandlerServiceImpl implements DianpingCommentHandler
             String comment_txt = li.select("div.J_brief-cont").first().text();
             //获取评论时间
             String time = li.select("span.time").text();
+            logger.info(Thread.currentThread().getName());
             logger.info("评论内容如下："+taste+" "+username+" "+comment_txt);
             DianpingComment dianpingComment=new DianpingComment();
             dianpingComment.setTaste(taste);

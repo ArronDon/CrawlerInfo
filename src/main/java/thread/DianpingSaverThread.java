@@ -15,11 +15,11 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by arron on 2016/9/8.
  */
-public class SaverThread implements Runnable {
-    private static Logger logger = Logger.getLogger(SaverThread.class);
+public class DianpingSaverThread implements Runnable {
+    private static Logger logger = Logger.getLogger(DianpingSaverThread.class);
     private String url;
 
-    public SaverThread(String url) {
+    public DianpingSaverThread(String url) {
         this.url = url;
     }
 
@@ -29,7 +29,7 @@ public class SaverThread implements Runnable {
         MemcachedClient client=(MemcachedClient) ctx.getBean("xmemcachedClient");
         String response=null;
         try {
-            logger.info(url);
+            logger.info(Thread.currentThread().getName());
             response=client.get(url);
             logger.info(url+"长短sa"+response.length());
         } catch (TimeoutException e) {
@@ -44,12 +44,7 @@ public class SaverThread implements Runnable {
         logger.info("saver:"+url+"---"+response.length());
         List<DianpingComment> list=handler.getCommentList(response);
         logger.info(url+"列表大小为："+list.size());
-//        if(list.size()==20){
-//            for(int i=0;i<20;i++) {
-//                DianpingComment comment=list.get(i);
-//                logger.info(comment.getUsername()+":"+comment.getContent()+"<>"+comment.getShop_name());
-//            }
-//        }
+
         DianpingCommentService commentService=(DianpingCommentService) ContextUtil.getBean("dianpingCommentService");
         commentService.addComments(list);
     }
