@@ -1,10 +1,13 @@
 package domain;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 /**
  * Created by arron on 2016/9/17.
  */
+@Component
 public class Episode implements Serializable{
     private static final long serialVersionUID = -3472711560882944100L;
     private String series_name;
