@@ -83,20 +83,21 @@ public class DianpingMainServiceImpl implements BaseGetInfoMainService {//implem
             exec.submit(new CrawlerThread(link,paramsMap));
 
         }
-        exec.shutdown();
+        
         //启动saver线程处理缓存的html文件
         ExecutorService saverExec=Executors.newFixedThreadPool(5);
         while (cachedUrlQueue.peek()!=null){
             String key=cachedUrlQueue.remove();
             exec.submit(new DianpingSaverThread(key));
         }
-        saverExec.shutdown();
+        
         //主线程等待子线程执行完毕后再退出
         try{
             while(!saverExec.awaitTermination(10, TimeUnit.SECONDS));
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        exec.shutdown();
+        saverExec.shutdown();
     }
 }
